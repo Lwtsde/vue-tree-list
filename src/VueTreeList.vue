@@ -32,12 +32,24 @@
         </span>
 
         <span v-if="model.isLeaf">
-          <slot name="leafNodeIcon" :expanded="expanded" :model="model" :root="rootNode">
+          <slot
+            name="leafNodeIcon"
+            :isHover="isHover"
+            :expanded="expanded"
+            :model="model"
+            :root="rootNode"
+          >
             <i class="vtl-icon vtl-menu-icon vtl-icon-file"></i>
           </slot>
         </span>
         <span v-else>
-          <slot name="treeNodeIcon" :expanded="expanded" :model="model" :root="rootNode">
+          <slot
+            name="treeNodeIcon"
+            :isHover="isHover"
+            :expanded="expanded"
+            :model="model"
+            :root="rootNode"
+          >
             <i class="vtl-icon vtl-menu-icon vtl-icon-folder"></i>
           </slot>
         </span>
@@ -60,7 +72,13 @@
             @click.stop.prevent="addChild(false)"
             v-if="!model.isLeaf && !model.addTreeNodeDisabled"
           >
-            <slot name="addTreeNodeIcon" :expanded="expanded" :model="model" :root="rootNode">
+            <slot
+              name="addTreeNodeIcon"
+              :isHover="isHover"
+              :expanded="expanded"
+              :model="model"
+              :root="rootNode"
+            >
               <i class="vtl-icon vtl-icon-folder-plus-e"></i>
             </slot>
           </span>
@@ -69,17 +87,35 @@
             @click.stop.prevent="addChild(true)"
             v-if="!model.isLeaf && !model.addLeafNodeDisabled"
           >
-            <slot name="addLeafNodeIcon" :expanded="expanded" :model="model" :root="rootNode">
+            <slot
+              name="addLeafNodeIcon"
+              :isHover="isHover"
+              :expanded="expanded"
+              :model="model"
+              :root="rootNode"
+            >
               <i class="vtl-icon vtl-icon-plus"></i>
             </slot>
           </span>
           <span title="edit" @click.stop.prevent="setEditable" v-if="!model.editNodeDisabled">
-            <slot name="editNodeIcon" :expanded="expanded" :model="model" :root="rootNode">
+            <slot
+              name="editNodeIcon"
+              :isHover="isHover"
+              :expanded="expanded"
+              :model="model"
+              :root="rootNode"
+            >
               <i class="vtl-icon vtl-icon-edit"></i>
             </slot>
           </span>
           <span title="delete" @click.stop.prevent="delNode" v-if="!model.delNodeDisabled">
-            <slot name="delNodeIcon" :expanded="expanded" :model="model" :root="rootNode">
+            <slot
+              name="delNodeIcon"
+              :isHover="isHover"
+              :expanded="expanded"
+              :model="model"
+              :root="rootNode"
+            >
               <i class="vtl-icon vtl-icon-trash"></i>
             </slot>
           </span>
